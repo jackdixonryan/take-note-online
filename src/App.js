@@ -24,6 +24,7 @@ class App extends Component {
       const db = firebase.firestore();
 
       db.collection("notes")
+        .orderBy("date", "desc")
         .where("madeBy", "==", this.state.user.uid)
         .get()
         .then(resolution => {
